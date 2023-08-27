@@ -1,0 +1,61 @@
+{% comment %}  
+
+{% paginate search.results by 6 %}
+
+{% if search.performed %}
+<h3>Here is your result</h3>
+
+{% for product in search.results %}
+
+{% if result.object_type == "page" %}
+
+<a href="{{result.url}}">{{ result.title }}</a>
+
+{% elsif result.object_type == "article" %}
+<a href="{{result.url}}">{{ result.title }}</a>
+
+
+{% else %}
+<a href="{{result.url}}">{{ result.title }}</a>
+
+{% endif %}
+{% endfor %}
+
+{% else %}
+<h3>Try Search Something</h3>
+
+{% endif %}
+
+<div class="pagination">
+{{ paginate | default_pagination }}
+</div>
+{% endpaginate %}
+
+{% endcomment %}
+
+{% paginate search.results by 6 %}
+
+  <h2>Here is the Search result</h2>
+
+  <div class="grid-1">
+    {% for product in search.results %}
+      <div class="product-wrapper">
+
+        <div style="height:250px;">
+          <img src="{{ product.featured_image | image_url}}" />
+        </div>
+        <h4>{{ product.title }}</h4>
+        <p>{{ product.price | money }}</p>
+
+        <a href="{{ product.url }}">
+          <button class="btn">View</button>
+        </a>
+
+      </div>
+      {{ item.content | highlight: search.terms }}
+    {% endfor %}
+  </div>
+
+
+  {{ paginate | default_pagination }}
+{% endpaginate %}
