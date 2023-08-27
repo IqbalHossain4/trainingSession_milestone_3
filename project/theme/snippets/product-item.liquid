@@ -1,0 +1,13 @@
+<div class="product-wrapper">
+
+  <div style="height:250px;">
+    <img src="{{ product.featured_image | image_url}}" />
+  </div>
+  <h4>{{ product.title }}</h4>
+  <p>{{ product.price | money }}</p>
+
+  <a href="{{ product.url }}">
+    <button class="btn">View</button>
+  </a>
+
+</div>
