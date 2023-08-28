@@ -3,23 +3,60 @@
   {{ page.content }}
 </div>
 
-{% form 'contact' %}
-  {{ form.errors | default_errors }}
+<div class="contact">
+  {% form 'contact' %}
+    {{ form.errors | default_errors }}
 
-  <div class="email">
-    <label for="email">Email</label>
-    <input
-      type="email"
-      name="contact[email]"
-      id="email" />
-  </div>
+    <div class="email">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="contact[email]"
+        id="email"
+        placeholder="Enter Your Email" />
+    </div>
 
-  <div class="message">
-    <label for="message">Message</label>
-    <textarea name="contact[body]" id="message"></textarea>
-  </div>
+    <div class="message">
+      <label for="message">Message</label>
+      <textarea
+        name="contact[body]"
+        id="message"
+        placeholder="Message"></textarea>
+    </div>
 
-  <div class="submit">
-    <input type="submit" value="Create" />
-  </div>
-{% endform %}
+    <div class="submit">
+      <input
+        type="submit"
+        value="Create"
+        class="contactBtn" />
+    </div>
+  {% endform %}
+</div>
+
+
+<style>
+  .contact {
+    width: 100%;
+  }
+  .email {
+    width: 50%;
+  }
+  .email input {
+    width: 100%;
+    outline: none;
+    padding: 10px 5px;
+    margin-top: 6px;
+  }
+
+  .message {
+    width: 50%;
+    margin: 20px 0;
+  }
+  .message textarea {
+    width: 100%;
+    outline: none;
+    padding: 10px 5px;
+    min-height: 200px;
+    margin-top: 6px;
+  }
+</style>

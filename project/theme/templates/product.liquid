@@ -1,33 +1,37 @@
 <h2>Products</h2>
-<div>
+<div class="productWrapper">
+
   <div style="height:350px;">
     <img src="{{ product.featured_image | image_url}}" />
   </div>
-  <h4>
-    <span>Name:</span>
-    {{ product.title }}</h4>
-  <p>
-    <span>Price:</span>
-    {{ product.price | money }}</p>
-  <p>
-    <span>
-      Description:</span>
-    {{ product.description }}
-  </p>
-</div>
+  <div>
+    <h4>
+      <span>Name:</span>
+      {{ product.title }}</h4>
+    <p>
+      <span>Price:</span>
+      {{ product.price | money }}</p>
+    <p>
+      <span>
+        Description:</span>
+      {{ product.description }}
+    </p>
 
-{% form 'product', product %}
-  <select name="id">
-    {% for variant in product.variants %}
-      <div>
-        <option value={{ variant.id }}>
-          {{ product.title }}
-        </option>
-      </div>
-    {% endfor %}
-  </select>
-  <button
-    style="margin-top:15px"
-    class="btn"
-    type="submit">Add To Cart</button>
-{% endform %}
+
+    {% form 'product', product %}
+      <select name="id">
+        {% for variant in product.variants %}
+          <div>
+            <option value={{ variant.id }}>
+              {{ product.title }}
+            </option>
+          </div>
+        {% endfor %}
+      </select>
+      <button
+        style="margin-top:15px"
+        class="btn"
+        type="submit">{{ 'general.add_to_cart' | t }}</button>
+    {% endform %}
+  </div>
+</div>
