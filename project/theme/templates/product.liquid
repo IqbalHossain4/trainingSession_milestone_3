@@ -22,6 +22,7 @@
       <select name="id">
         {% for variant in product.variants %}
           <div>
+            <p>Categories</p>
             <option value={{ variant.id }}>
 
               {{ product.title }}
@@ -29,6 +30,17 @@
           </div>
         {% endfor %}
       </select>
+
+      <div class="productqQuantity">
+        <p>Quantity</p>
+        <input
+          type="number"
+          id="quantity"
+          name="quantity"
+          value="1"
+          placeholder="Increase Quantity"
+          class="quantity">
+      </div>
       <button
         style="margin-top:15px"
         class="btn"
