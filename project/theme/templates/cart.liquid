@@ -4,27 +4,46 @@
   {% if cart.empty? %}
     <p>Hey Yuor cart Is Empty</p>
   {% else %}
-
-
-    <div class="grid-1">
-
+    <table id="customers">
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
       {% for item in cart.items %}
-        <div style="margin-bottom: 15px;">
-          <div style="height: 250px; width:250px">
+        <tr>
+          <td>
+            <div style="height: 60px; width:60px;">
 
-            <img src="{{ item.image | image_url }}" />
-          </div>
-          <h4>{{ item.title }}</h4>
-          <p>{{ item.final_line_price | money }}</p>
-          <input
-            type="number"
-            name="updates[]"
-            value="{{ item.quantity }}"
-            placeholder="Increase Quantity">
-          <a class="btnDelete" href="{{ item.url_to_remove }}">Delete</a>
-        </div>
+              <img src="{{ item.image | image_url }}" style="border-radius:100%" />
+            </div>
+          </td>
+          <td>
+            <h5>{{ item.title }}</h5>
+          </td>
+          <td>
+            <p>{{ item.final_line_price | money }}</p>
+          </td>
+          <td>
+            <div class="quantities">
+              <input
+                type="number"
+                name="updates[]"
+                value="{{ item.quantity }}"
+                placeholder="Increase Quantity"
+                class="quantity">
+            </div>
+          </td>
+          <td>
+            <a class="btnDelete" href="{{ item.url_to_remove }}">Delete</a>
+          </td>
+        </tr>
       {% endfor %}
-    </div>
+    </table>
+
+
     <hr>
 
     <p>Total: {{ cart.total_price | money }}</p>
